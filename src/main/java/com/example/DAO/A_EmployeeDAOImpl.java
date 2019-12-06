@@ -20,43 +20,11 @@ public class A_EmployeeDAOImpl implements A_EmployeeDAO {
 	 {
 		connection = A_DatabaseCon.getConnection();
 		System.out.println(connection);
-		String query = "Select * from a_employee where emp_role = 'admin' ";
-		//Employee emp;
-		admins = new ArrayList<>();
-		PreparedStatement st;
-		try {
-			
-			st = connection.prepareStatement(query);
-			
-			ResultSet rs = st.executeQuery();
-			
-			while(rs.next()) {
-				A_Employee emp = new A_Employee();
-				int empId = rs.getInt(1);
-				String empName = rs.getString(2);
-				String empDob = rs.getString(3);
-				int empContact = rs.getInt(4);
-				String uname = rs.getString(5);
-				String pwd = rs.getString(6);
-				String erole = rs.getString(7);
-				System.out.println(empId + " " + empName + " " + empDob + " " + empContact);
-				emp.setEmp_no(empId);
-				emp.setName(empName);
-				emp.setDob(empDob);
-				emp.setPhno(empContact);
-				emp.setUsername(uname);
-				emp.setPassword(pwd);
-				emp.setEmp_role(erole);
-				//admins.add(new Employee(empId,empName,empDob,empContact));
-				admins.add(emp);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	 }
+	 
+	 
 		
-		
-	}
+	
 	
 		
 	 public List<A_Employee> getAllSuperuser()
@@ -105,6 +73,42 @@ public class A_EmployeeDAOImpl implements A_EmployeeDAO {
 	
 	 @Override
 	public List<A_Employee> getAllEmployee(){
+		String query = "Select * from a_employee where emp_role = 'admin' ";
+		//Employee emp;
+		admins = new ArrayList<>();
+		PreparedStatement st;
+		try {
+			
+			st = connection.prepareStatement(query);
+			
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				A_Employee emp = new A_Employee();
+				int empId = rs.getInt(1);
+				String empName = rs.getString(2);
+				String empDob = rs.getString(3);
+				int empContact = rs.getInt(4);
+				String uname = rs.getString(5);
+				String pwd = rs.getString(6);
+				String erole = rs.getString(7);
+				System.out.println(empId + " " + empName + " " + empDob + " " + empContact);
+				emp.setEmp_no(empId);
+				emp.setName(empName);
+				emp.setDob(empDob);
+				emp.setPhno(empContact);
+				emp.setUsername(uname);
+				emp.setPassword(pwd);
+				emp.setEmp_role(erole);
+				//admins.add(new Employee(empId,empName,empDob,empContact));
+				admins.add(emp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		 return admins;
 	}
 
