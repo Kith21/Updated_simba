@@ -8,7 +8,7 @@ public class A_Employee {
 	private int emp_no;
 	private String name;
 	private String dob;
-	private int phno;
+	private long phno;
 	private String username;
 	private String password;
 	private String emp_role;
@@ -31,10 +31,10 @@ public class A_Employee {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public int getPhno() {
+	public long getPhno() {
 		return phno;
 	}
-	public void setPhno(int phno) {
+	public void setPhno(long phno) {
 		this.phno = phno;
 	}
 	public String getUsername() {
