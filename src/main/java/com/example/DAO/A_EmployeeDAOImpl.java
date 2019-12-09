@@ -46,7 +46,7 @@ public class A_EmployeeDAOImpl implements A_EmployeeDAO {
 				int empId = rs.getInt(1);
 				String empName = rs.getString(2);
 				String empDob = rs.getString(3);
-				int empContact = rs.getInt(4);
+				long empContact = rs.getLong(4);
 				String uname = rs.getString(5);
 				String pwd = rs.getString(6);
 				String erole = rs.getString(7);
@@ -88,7 +88,7 @@ public class A_EmployeeDAOImpl implements A_EmployeeDAO {
 				int empId = rs.getInt(1);
 				String empName = rs.getString(2);
 				String empDob = rs.getString(3);
-				int empContact = rs.getInt(4);
+				long empContact = rs.getLong(4);
 				String uname = rs.getString(5);
 				String pwd = rs.getString(6);
 				String erole = rs.getString(7);
