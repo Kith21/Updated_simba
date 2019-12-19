@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.DAO.A_EmployeeDAO;
-import com.example.DAO.A_EmployeeDAOImpl;
-import com.example.model.A_Employee;
+import com.example.DAO.EmployeeDAO;
+import com.example.DAO.EmployeeDAOImpl;
+import com.example.model.Employee;
 
 
 @Repository
@@ -28,25 +28,25 @@ public class A_EmployeeRestController {
 
 
 	@Autowired
-	private A_EmployeeDAOImpl a_EmployeeDAOImpl;
+	private EmployeeDAOImpl employeeDAOImpl;
 
 	
 	@GetMapping("/a_employee")
 		public List getEmployee() {
 
-		return a_EmployeeDAOImpl.getAllEmployee();
+		return employeeDAOImpl.getAllEmployee();
 
 	}
 	@GetMapping("/a_superuser")
 	public List getSuperuser() {
 
-	return a_EmployeeDAOImpl.getAllSuperuser();
+	return employeeDAOImpl.getAllSuperuser();
 
 }
 	@DeleteMapping("/delete/a_employee/{id}")
 	public ResponseEntity deleteCustomer(@PathVariable Long id) {
 		
-		if (null == a_EmployeeDAOImpl.deleteEmployee(id)) {
+		if (null == employeeDAOImpl.deleteEmployee(id)) {
 			return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
 		}
 
@@ -56,24 +56,24 @@ public class A_EmployeeRestController {
 	
 	
 	@PostMapping(value = "/post/a_employee")
-	public ResponseEntity createCustomer(@RequestBody A_Employee a_Employee) {
+	public ResponseEntity createCustomer(@RequestBody Employee employee) {
 
-		System.out.println(a_Employee);
-		a_EmployeeDAOImpl.registerAdmin(a_Employee);
+		System.out.println(employee);
+		employeeDAOImpl.registerAdmin(employee);
 
-		return new ResponseEntity(a_Employee, HttpStatus.OK);
+		return new ResponseEntity(employee, HttpStatus.OK);
 	}
 	
 	@PutMapping("/put/a_employee/{id}")
-	public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody A_Employee a_Employee) {
+	public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody Employee employee) {
 		System.out.println(id);
-		System.out.println(a_Employee);
-		a_Employee = a_EmployeeDAOImpl.updateAdmin(id, a_Employee);
+		System.out.println(employee);
+		employee = employeeDAOImpl.updateAdmin(id, employee);
 
-		if (null == a_Employee) {
+		if (null == employee) {
 			return new ResponseEntity("No Customer found for ID " + id,HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity(a_Employee, HttpStatus.OK);
+		return new ResponseEntity(employee, HttpStatus.OK);
 	}
 }
