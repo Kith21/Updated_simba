@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.example.dbUtil.A_DatabaseCon;
 
 import com.example.model.A_Employee;
+
 @Repository
 public class A_EmployeeDAOImpl implements A_EmployeeDAO {
 	Connection connection = null;
@@ -21,12 +22,7 @@ public class A_EmployeeDAOImpl implements A_EmployeeDAO {
 		connection = A_DatabaseCon.getConnection();
 		System.out.println(connection);
 	 }
-	 
-	 
-		
-	
-	
-		
+	 	
 	 public List<A_Employee> getAllSuperuser()
 	 {
 		connection = A_DatabaseCon.getConnection();
