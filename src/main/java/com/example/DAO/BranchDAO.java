@@ -2,8 +2,10 @@ package com.example.DAO;
 
 import java.util.List;
 
-import com.example.model.Branch;
+import org.springframework.stereotype.Repository;
 
+import com.example.model.Branch;
+@Repository
 public interface BranchDAO {
 	Branch registerBranch(Branch branch);
 	List<Branch> getAllBranch();
