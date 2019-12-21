@@ -119,7 +119,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public Employee registerAdmin(Employee employee) {
 		// TODO Auto-generated method stub
-		String role = "admin";
+		String role = "Regional Manager";
 		String select_query = "Select max(employee_id) from employee";
 		Statement select_stmt;
 		int i=0;
@@ -137,7 +137,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			employee.setUsername("sou");
 			employee.setPwd("sou23");
 			employee.setRole(role);*/
-			PreparedStatement pst = connection.prepareStatement("Insert into Employee values(?,?,?,?,?,?,?)");
+			PreparedStatement pst = connection.prepareStatement("Insert into Employee values(?,?,?,?,?,?,?,?)");
 			
 			pst.setInt(1,temp_empId);
 			pst.setString(2,employee.getName());
@@ -146,7 +146,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			pst.setString(5, employee.getEmail());
 			pst.setString(6,employee.getUsername());
 			pst.setString(7,employee.getPwd());
-			pst.setString(8,role);
+			pst.setString(8,employee.getRole());
 			i = pst.executeUpdate();
 			System.out.println(i + " records inserted");
 			//admins.add(employee);
