@@ -52,6 +52,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				emp.setName(empName);
 				emp.setDob(empDob);
 				emp.setContact(empContact);
+				emp.setEmail(email);
 				emp.setUsername(uname);
 				emp.setPwd(pwd);
 				emp.setRole(erole);
