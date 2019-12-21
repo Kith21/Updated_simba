@@ -69,7 +69,7 @@ public class BranchDAOImpl implements BranchDAO{
 	@Override
 	public List<Branch> getAllBranch() {
 		// TODO Auto-generated method stub
-		String query = "Select * from branch ";
+		String query = "Select * from branch";
 		
 		branches = new ArrayList<>();
 		PreparedStatement st;
