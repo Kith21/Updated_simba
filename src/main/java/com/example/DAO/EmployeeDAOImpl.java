@@ -26,7 +26,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public List<Employee> getAllAdmin() {
 		
 		
-		String query = "Select * from employee where employee_role = 'regional manager' ";
+		String query = "Select * from employee where employee_role = 'Regional Manager' ";
 		//Employee emp;
 		admins = new ArrayList<>();
 		PreparedStatement st;
