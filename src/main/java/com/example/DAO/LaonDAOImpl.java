@@ -108,7 +108,7 @@ public class LaonDAOImpl implements LoanDAO {
 	}
 
 	@Override
-	public Loan updateLoan(Long loanId, Loan loan) {
+	public Loan updateLoan(String loanId, Loan loan) {
 		// TODO Auto-generated method stub
 		try {
 			String updSql = "UPDATE  Loan set loan_type = ?, interest_rate = ?, loan_desc = ? WHERE loan_id = ?";
@@ -117,7 +117,7 @@ public class LaonDAOImpl implements LoanDAO {
 			pst.setString(1, loan.getLoan_type());
 			pst.setString(2, loan.getLoan_irate());
 			pst.setString(3, loan.getLoan_desc());
-			pst.setLong(4, loanId);
+			pst.setString(4, loanId);
 			
 			
 			
@@ -139,13 +139,13 @@ public class LaonDAOImpl implements LoanDAO {
 	}
 
 	@Override
-	public Long deleteLoan(Long loanId) {
+	public String deleteLoan(String loanId) {
 		// TODO Auto-generated method stub
 		try{
 			
 			String sql="DELETE FROM loan WHERE loanId = ? ";			
 			PreparedStatement pst = connection.prepareStatement(sql);
-			pst.setLong(1, loanId);
+			pst.setString(1, loanId);
 			
 			int res  = pst.executeUpdate();
 			
