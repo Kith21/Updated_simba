@@ -115,7 +115,7 @@ public class BranchDAOImpl implements BranchDAO{
 	}
 
 	@Override
-	public Branch updateBranch(Long branchId, Branch branch) {
+	public Branch updateBranch(String branchId, Branch branch) {
 		// TODO Auto-generated method stub
 		try {
 			String updSql = "UPDATE  Branch set branch_address = ?,branch_contact = ? WHERE branch_id = ?";
@@ -123,7 +123,7 @@ public class BranchDAOImpl implements BranchDAO{
 			
 			pst.setString(1, branch.getBr_addr());
 			pst.setLong(2, branch.getBr_contact());
-			pst.setLong(3, branchId);
+			pst.setString(3, branchId);
 			
 			
 			
@@ -145,13 +145,13 @@ public class BranchDAOImpl implements BranchDAO{
 	}
 
 	@Override
-	public Long deleteBranch(Long branchId) {
+	public String deleteBranch(String branchId) {
 		// TODO Auto-generated method stub
 		try{
 			
 			String sql="DELETE FROM branch WHERE branch_id = ? ";			
 			PreparedStatement pst = connection.prepareStatement(sql);
-			pst.setLong(1, branchId);
+			pst.setString(1, branchId);
 			
 			int res  = pst.executeUpdate();
 			
