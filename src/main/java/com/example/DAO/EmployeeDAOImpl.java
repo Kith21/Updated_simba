@@ -196,7 +196,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public Employee updateSuperuser(Long empId, Employee emp) {
 		// TODO Auto-generated method stub
 		try {
-			String updSql = "UPDATE  Employee set employee_name = ?,dob = ?,contact = ?,mail = ?username =?,password = ?,employee_role=? WHERE employee_id = ?";
+			String updSql = "UPDATE  Employee set employee_name = ?,dob = ?,contact = ?,mail = ?,username =?,password = ?,employee_role=? WHERE employee_id = ?";
 			PreparedStatement pst = connection.prepareStatement(updSql);
 			
 			pst.setString(1, emp.getName());
