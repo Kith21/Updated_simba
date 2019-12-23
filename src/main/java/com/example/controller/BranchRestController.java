@@ -37,7 +37,7 @@ public class BranchRestController {
 	}
 	
 	@PutMapping("/put/branch/{id}")
-	public ResponseEntity updateBranch(@PathVariable Long id, @RequestBody Branch branch) {
+	public ResponseEntity updateBranch(@PathVariable String id, @RequestBody Branch branch) {
 
 		branch = branchDaoImpl.updateBranch(id, branch);
 
@@ -49,7 +49,7 @@ public class BranchRestController {
 	}
 	
 	@DeleteMapping("/delete/branch/{id}")
-	public ResponseEntity deleteBranch(@PathVariable Long id) {
+	public ResponseEntity deleteBranch(@PathVariable String id) {
 
 		if (null == branchDaoImpl.deleteBranch(id)) {
 			return new ResponseEntity("No Branch found for ID " + id, HttpStatus.NOT_FOUND);
