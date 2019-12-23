@@ -36,8 +36,14 @@ public class BranchDAOImpl implements BranchDAO{
 			ResultSet select_rs = select_stmt.executeQuery(select_query);
 
 			select_rs.next();
-			int branch_Id = select_rs.getInt(1);
-			int temp_brId = ++branch_Id;
+			//select_rs.next();
+			String id = "b0";
+			String br_Id = select_rs.getString(1);
+			int temp_id = Integer.parseInt(br_Id.substring(2));
+			int temp_brId = ++temp_id;
+			String eid = id+temp_brId;
+			//int branch_Id = select_rs.getInt(1);
+			//int temp_brId = ++branch_Id;
 			/*employee.setEmpId(temp_empId);
 			employee.setName("Soumya");
 			employee.setDob("1997-07-25");
@@ -47,7 +53,7 @@ public class BranchDAOImpl implements BranchDAO{
 			employee.setRole(role);*/
 			PreparedStatement pst = connection.prepareStatement("Insert into Branch values(?,?,?,?,?)");
 			
-			pst.setInt(1,temp_brId);
+			pst.setString(1,eid);
 			pst.setString(2,branch.getBr_name());
 			pst.setString(3,branch.getBr_ifsc());
 			pst.setString(4,branch.getBr_addr());
@@ -81,7 +87,7 @@ public class BranchDAOImpl implements BranchDAO{
 			
 			while(rs.next()) {
 				Branch branch = new Branch();
-				int brId = rs.getInt(1);
+				String brId = rs.getString(1);
 				String brName = rs.getString(2);
 				String brIfsc = rs.getString(3);
 				String brAddr = rs.getString(4);

@@ -35,8 +35,11 @@ public class LaonDAOImpl implements LoanDAO {
 			ResultSet select_rs = select_stmt.executeQuery(select_query);
 
 			select_rs.next();
-			int loan_Id = select_rs.getInt(1);
-			int temp_loanId = ++loan_Id;
+			String loanid = "LO0";
+			String loan_Id = select_rs.getString(1);
+			int temp_id = Integer.parseInt(loan_Id.substring(2));
+			int temp_loanId = ++temp_id;
+			String id = loanid+temp_loanId;
 			/*employee.setEmpId(temp_empId);
 			employee.setName("Soumya");
 			employee.setDob("1997-07-25");
@@ -46,7 +49,7 @@ public class LaonDAOImpl implements LoanDAO {
 			employee.setRole(role);*/
 			PreparedStatement pst = connection.prepareStatement("Insert into Loan values(?,?,?,?)");
 			
-			pst.setInt(1,temp_loanId);
+			pst.setString(1,id);
 			pst.setString(2,loan.getLoan_type());
 			pst.setString(3,loan.getLoan_irate());
 			pst.setString(4,loan.getLoan_desc());
@@ -81,7 +84,7 @@ public class LaonDAOImpl implements LoanDAO {
 			
 			while(rs.next()) {
 				Loan loan = new Loan();
-				int loan_Id = rs.getInt(1);
+				String loan_Id = rs.getString(1);
 				String loan_type = rs.getString(2);
 				String loan_rate = rs.getString(3);
 				String loan_desc = rs.getString(4);
@@ -177,7 +180,7 @@ public class LaonDAOImpl implements LoanDAO {
 			
 			while(rs.next()) {
 				Loan loan = new Loan();
-				int loan_Id = rs.getInt(1);
+				String loan_Id = rs.getString(1);
 				String loan_type = rs.getString(2);
 				String loan_rate = rs.getString(3);
 				String loan_desc = rs.getString(4);
