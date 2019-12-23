@@ -38,7 +38,7 @@ public class LoanRestController {
 	}
 	
 	@PutMapping("/put/loan/{id}")
-	public ResponseEntity updateLoans(@PathVariable Long id, @RequestBody Loan loan) {
+	public ResponseEntity updateLoans(@PathVariable String id, @RequestBody Loan loan) {
 
 		loan = loanDaoImpl.updateLoan(id, loan);
 
@@ -50,7 +50,7 @@ public class LoanRestController {
 	}
 	
 	@DeleteMapping("/delete/loan/{id}")
-	public ResponseEntity deleteLoans(@PathVariable Long id) {
+	public ResponseEntity deleteLoans(@PathVariable String id) {
 
 		if (null == loanDaoImpl.deleteLoan(id)) {
 			return new ResponseEntity("No Loan found for ID " + id, HttpStatus.NOT_FOUND);
