@@ -11,9 +11,9 @@ public interface EmployeeDAO {
 	List<Employee> getAllAdmin();
 	List<Employee> getSuperuser();
 	Employee get(Long empId);
-	Long deleteAdmin(Long empId);
-	Employee updateAdmin(Long empId,Employee emp);
-	Employee updateSuperuser(Long empId,Employee emp);
+	String deleteAdmin(String empId);
+	Employee updateAdmin(String empId,Employee emp);
+	Employee updateSuperuser(String empId,Employee emp);
 	Employee updateCustomer(Long acc_no,Employee emp);
 }
 

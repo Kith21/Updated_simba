@@ -166,7 +166,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	
 
 	@Override
-	public Employee updateAdmin(Long empId,Employee emp)
+	public Employee updateAdmin(String empId,Employee emp)
 	{
 		try {
 			String updSql = "UPDATE  Employee set employee_name = ?,dob = ?,contact = ?,mail = ?,username =?,password = ?,employee_role=? WHERE employee_id = ?";
@@ -179,7 +179,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			pst.setString(5, emp.getUsername());
 			pst.setString(6, emp.getPwd());
 			pst.setString(7, emp.getRole());
-			pst.setLong(8, empId);
+			pst.setString(8, empId);
 			
 			int res  = pst.executeUpdate();
 			
@@ -198,7 +198,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 	
 	@Override
-	public Employee updateSuperuser(Long empId, Employee emp) {
+	public Employee updateSuperuser(String empId, Employee emp) {
 		// TODO Auto-generated method stub
 		try {
 			String updSql = "UPDATE  Employee set employee_name = ?,dob = ?,contact = ?,mail = ?,username =?,password = ?,employee_role=? WHERE employee_id = ?";
@@ -211,7 +211,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			pst.setString(5, emp.getUsername());
 			pst.setString(6, emp.getPwd());
 			pst.setString(7, emp.getRole());
-			pst.setLong(8, empId);
+			pst.setString(8, empId);
 			
 			int res  = pst.executeUpdate();
 			
@@ -230,13 +230,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 	
 	@Override
-	public Long deleteAdmin(Long empId) {
+	public String deleteAdmin(String empId) {
 		// TODO Auto-generated method stub
 		try{
 			
 			String sql="DELETE FROM Employee WHERE employee_id = ? ";			
 			PreparedStatement pst = connection.prepareStatement(sql);
-			pst.setLong(1, empId);
+			pst.setString(1, empId);
 			
 			int res  = pst.executeUpdate();
 			
